@@ -20,9 +20,10 @@ package whisk
 import (
 	"errors"
 	"fmt"
-	"github.com/apache/openwhisk-client-go/wski18n"
 	"net/http"
 	"strings"
+
+	"github.com/apache/openwhisk-client-go/wski18n"
 )
 
 type ApiService struct {
@@ -315,7 +316,7 @@ func (api ApiFilteredRow) ToSummaryRowString() string {
 }
 
 func (s *ApiService) List(apiListOptions *ApiListRequestOptions) (*ApiListResponse, *http.Response, error) {
-	route := "web/whisk.system/apimgmt/getApi.http"
+	route := "web/whisk-system/apimgmt/getApi.http"
 
 	routeUrl, err := addRouteOptions(route, apiListOptions)
 	if err != nil {
@@ -355,7 +356,7 @@ func (s *ApiService) List(apiListOptions *ApiListRequestOptions) (*ApiListRespon
 }
 
 func (s *ApiService) Insert(api *ApiCreateRequest, options *ApiCreateRequestOptions, overwrite bool) (*ApiCreateResponse, *http.Response, error) {
-	route := "web/whisk.system/apimgmt/createApi.http"
+	route := "web/whisk-system/apimgmt/createApi.http"
 	Debug(DbgInfo, "Api PUT route: %s\n", route)
 
 	routeUrl, err := addRouteOptions(route, options)
@@ -396,7 +397,7 @@ func (s *ApiService) Insert(api *ApiCreateRequest, options *ApiCreateRequestOpti
 }
 
 func (s *ApiService) Get(api *ApiGetRequest, options *ApiGetRequestOptions) (*ApiGetResponse, *http.Response, error) {
-	route := "web/whisk.system/apimgmt/getApi.http"
+	route := "web/whisk-system/apimgmt/getApi.http"
 	Debug(DbgInfo, "Api GET route: %s\n", route)
 
 	routeUrl, err := addRouteOptions(route, options)
@@ -431,7 +432,7 @@ func (s *ApiService) Get(api *ApiGetRequest, options *ApiGetRequestOptions) (*Ap
 }
 
 func (s *ApiService) Delete(api *ApiDeleteRequest, options *ApiDeleteRequestOptions) (*http.Response, error) {
-	route := "web/whisk.system/apimgmt/deleteApi.http"
+	route := "web/whisk-system/apimgmt/deleteApi.http"
 	Debug(DbgInfo, "Api DELETE route: %s\n", route)
 
 	routeUrl, err := addRouteOptions(route, options)
